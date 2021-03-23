@@ -1,0 +1,234 @@
+<html>
+
+<head>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="jquery.js"></script>
+  <link rel="stylesheet" href="swiper.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Allerta&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+  <title>KlimaVenlig</title>
+  <script src="Chart.js"></script>
+  <script src="utils.js"></script>
+
+</head>
+
+<body id="body_background">
+
+  <form id="login">
+    <h1>KlimaVenlig</h1>
+    <input type="text" id="email" name="email" placeholder="Email" style="width: 220px; left: 73px;"><br><br>
+    <input type="password" id="pass" name="pass" placeholder="Adgangskode" style="width: 220px; left: 73px;"><br><br>
+    <button id="loginknap">Login</button>
+  </form>
+
+  <!-- Swiper -->
+  <div id="Swiper_body">
+    <div class="swiper-container">
+      <div class="swiper-wrapper" style="top:-60px;">
+
+        <div class="swiper-slide">
+          <div class="swiper-slide-header">Næsten klar</div>
+          <div class="swiper-slide-indhold">Vi har lige brug for lidt informationer omkring jeres forbrug</div>
+        </div>
+        <div class="swiper-slide">
+          <div class="swiper-slide-header">Familienavn</div>
+          <div class="swiper-slide-indhold"></div> <br>
+
+
+          <input type="text" id="fname">
+        </div>
+
+        <div class="swiper-slide">
+          <div class="swiper-slide-header">Husholdnings Energi</div>
+
+          <div class="swiper-slide-indhold" id="swiper_inhold">
+
+            <label for="El">Elregning i kr. pr. kvartal</label><br>
+            <input type="number" id="El" value="">
+
+
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="swiper-slide-header">Transport <br>Privat bil</div>
+
+          <div class="swiper-slide-indhold" id="swiper_inhold">
+
+            <label for="KmPrUge">Kilometer kørt pr. uge</label><br>
+            <input type="number" id="KmPrUge">
+
+            <label for="kml">Bilens km/l</label><br>
+            <input type="number" id="kml">
+
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="swiper-slide-header">Fødevarer</div>
+          <div class="swiper-slide-indhold" style="top: 35%;">
+
+            <label>Kroner brugt pr. måned på</label><br><br>
+
+            <label for="Kød" style="right: 5%; position: relative;">Kød/æg</label>
+            <label for="Frugt" style="left: 11%; position: relative;">Frugt/Grønt</label><br>
+            <input type="number" id="Kød" style="width: 35%;">
+            <input type="number" id="Frugt" style="width: 35%;"> <br>
+
+
+            <label for="Bagværk" style="right: 13%; position: relative;">Bagværk</label>
+            <label for="Mejeri" style="left: 9%; position: relative;">Mejeri</label><br>
+            <input type="number" id="Bagværk" style="width: 35%;">
+            <input type="number" id="Mejeri" style="width: 35%;"> <br>
+
+
+            <label for="SpiseUde" style="right: 13.5%; position: relative;">Spise ude</label>
+            <label for="Andet" style="left: 8%; position: relative;">Andet</label><br>
+            <input type="number" id="SpiseUde" style="width: 35%;">
+            <input type="number" id="Andet" style="width: 35%;"> <br>
+
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="swiper-slide-header">Goder & Services</div>
+          <div class="swiper-slide-indhold">
+
+            <label for="Shopping">Shopping af tøj kr. pr. måned</label><br>
+            <input type="number" id="Shopping">
+
+            <label for="Møbler">Møbler kr. pr. måned</label><br>
+            <input type="number" id="Møbler">
+
+          </div>
+
+        </div>
+        <div class="swiper-slide">
+          <div class="swiper-slide-header">Nu kan du komme i gang</div>
+          <div class="swiper-slide-indhold"></div>
+
+          <button class="button_færdig" onclick="updateData()">Færdig</button>
+
+        </div>
+      </div>
+
+      <!-- Add Pagination -->
+      <div class="swiper-pagination"></div>
+
+
+      <!-- Add Navigation -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-text">Swipe</div>
+      <div class="swiper-button-next"></div>
+    </div>
+  </div>
+
+  <div id="statsPage">
+    <h3 id="statsHeader">Dine Data</h3>
+    <div id="canvas-holder" style="width:100%">
+
+      <canvas id="chart-area">
+
+      </canvas>
+      <div class="statsData">
+        <div class="container">
+          <div class="col">
+            <label id="statsText" for="HusHoldningsenergi"> Husholdnings</label>
+            <label class="mængde" id="husMængde" for="Mængde" style="right: -30px;"></label>
+            <label class="statsProcent" for="Procent" id="husholdningsenergiProcent" style="right: -53px;"></label>
+          </div>
+          <div class="col">
+            <label id="statsText" for="Transport"> Transport</label>
+            <label class="mængde" id="tranMængde" for="Mængde" style="right: -54px;"></label>
+            <label class="statsProcent" for="Procent" id="transportProcent" style="right: -62px;"></label>
+          </div>
+          <div class="col">
+            <label id="statsText" for="Fødevarer">Fødevarer</label>
+            <label class="mængde" id="fødeMængde" for="Mængde" style="right: -51px;"></label>
+            <label class="statsProcent" for="Procent" id="fødevarerProcent" style="right: -70px;"></label>
+          </div>
+          <div class="col">
+            <label id="statsText" for="GoderogServices"> Goder og Services</label>
+            <label class="mængde" id="godeMængde" for="Mængde" style="right: -4px;"></label>
+            <label class="statsProcent" for="Procent" id="goderOgservicesProcent" style="right: -22px;"></label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="tilføj">
+    <h3
+      style="color: white; font-family: 'Alegreya Sans SC', sans-serif; font-size: x-large; position: absolute; top: 230px; left: 35px; width: 300px; text-align: center;">
+      Hvis du vil ændre dataen tryk på knappen</h3> <br>
+    <button onclick="tilføjdata()" class="button_færdig" style="position: absolute; left: 85px; top:358px">Ændre
+      data</button>
+  </div>
+
+  <div id="hovedmenu">
+
+    <div id="Home-info">
+
+      <img class="klode" src="images/klode.png">
+
+
+
+      <div class="info_stats_tilføj">
+
+        <label id="labelinfo" for="brødtekstinfo" onclick="skifttekstinfo()">Info</label>
+        <label id="labelmål" for="brødtekstmål" onclick="skifttekstmål()" style="left: 33%; opacity: 30%;">Mål</label>
+        <label id="labeltips" for="brødteksttips" onclick="skiftteksttips()"
+          style="left: 63%; opacity: 30%;">Tips</label>
+
+        <span id="dotinfo" class="dotinfo" for="brødtekstinfo" style="left: 3%;"></span>
+        <span id="dotmål" class="dotmål" style="left: 48%;"></span>
+        <span id="dottips" class="dottips" style="left: 90%;"> </span>
+
+        <p id="brødtekstinfo" style="bottom: -99px; position: absolute;">
+          Nu har du indastet dine data. Nu kan du bevæge dig rundt i applikationen ved at trykke på de forskellige knapper og små overskrifter.  
+
+          <p id="brødtekstmål" style="visibility: hidden; bottom: -50px; position: absolute;">
+Her vil brugeren se deres mål omkring deres CO2 udslip.
+          </p>
+
+          <p id="brødteksttips" style="visibility: hidden; position: absolute;">
+           Her vil brugeren se tips i forhold til deres mål.
+          </p>
+        </p>
+      </div>
+
+    </div>
+  </div>
+  <div id="bottom-menu" class="container" style="position: fixed; bottom: 25px;">
+    <div class="row">
+      <div class="col">
+        <div id="btn_info" class="knappen" onclick="vistekstinfo()">
+          <img src="images/miniklode.png" class="knap-img" />
+          <div id="tekstinfo" class="knap-text">Home</div>
+        </div>
+      </div>
+      <div class="col">
+        <div id="btn_stats" class="knappen" onclick="vistekststats()">
+          <img src="images/fod.png" class="knap-img" />
+          <div id="tekststats" class="knap-text">Stats</div>
+        </div>
+      </div>
+      <div class="col">
+        <div id="btn_add" class="knappen" onclick="visteksttilføj()">
+          <img src="images/stats.png" class="knap-img" />
+          <div id="teksttilføj" class="knap-text">Tilføj</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="swiper.min.js"></script>
+  <script src="javascript.js"></script>
+</body>
+
+</html>

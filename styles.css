@@ -1,0 +1,401 @@
+
+#body_background{
+    background-image: url('images/LoginSide.png');
+    position: relative;
+}
+h1{
+    font-family: 'Alegreya Sans SC', sans-serif;
+    margin-left: 67px;
+    margin-top: 105px;
+    font-size: 48px;
+    color: white;
+    font-weight: 400;
+}
+#Swiper_body {
+    background: white;
+    font-family: 'Allerta', sans-serif;
+    font-size: 14px;
+    color:#000;
+    margin: 0;
+    padding: 0;
+    display: none;
+  }
+  .swiper-container {
+    width: 100%;
+    height: 100%;
+  }
+  .swiper-slide {
+    font-size: 18px;
+    color: white;
+    position: relative;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+  }
+
+  .swiper-button-text{
+    position: absolute;
+    top: 88.5%;
+    left: 43.5%;
+    z-index: 10;
+    color: white;
+    font-size: 18px;
+  }
+  #chart-area{
+    position: absolute;
+    top: 225px;
+  }
+  .swiper-slide-header{
+    position: absolute;
+    top: 27%;
+    font-size: 40px;
+    width: 80%;
+    text-align: center;
+  }
+  .swiper-slide-indhold{
+    position: absolute;
+    font-size: 18px;
+    text-align: center;
+    width: 80%;
+    top: 53%;
+    display:inline-block;
+    
+  }
+  input[type=number] {
+    border: 1px solid black;
+    border-radius: 15px;
+    width: 80%;
+    height: 36px;
+    margin: 15px;
+    font-size: 22 px;
+    text-align: center;
+  }
+  #fname{
+    border: 1px solid black;
+    border-radius: 15px;
+    width: 69%;
+    height: 36px;
+    margin: 15px;
+    font-size: 22px;
+    text-align: center;
+    position: absolute;
+    right: 44px;
+  }
+  .button_færdig{
+    width: 53%;
+    height: 9%;
+    border-radius: 40px;
+    background-color: #89DC96;
+    color: #277E61;
+    box-shadow: 0px 4px;
+    position: relative;
+    top: 10%;
+    border:none;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .button:active {
+  
+    box-shadow: 0 5px rgb(0, 0, 0);
+    transform: translateY(4px);
+  }
+  canvas {
+		-moz-user-select: none;
+		-webkit-user-select: none;
+    -ms-user-select: none;
+  }
+  #statsPage{
+    display: none;
+    height: 667px;
+width: 370px;
+  }
+  
+#hovedmenu{
+  position: relative;
+  background-image: url("images/Homeinfo.png");
+  z-index: 1;
+  display: none;
+}
+
+
+.klode{
+  top: 100px;
+  left: 135px;
+  position: absolute;
+}
+
+#buttons{
+visibility: none;
+}
+label{
+  color: white;
+  position: relative;
+  cursor: pointer;
+}
+.info_stats_tilføj{
+  top: 300;
+  position: absolute;
+  width: 269px;
+
+  left: 59px;
+  color: white;
+ 
+}
+.dotmål{
+  height: 9%;
+width: 2%;
+background-color: white;
+border-radius: 50%;
+display: inline-block;
+  position: absolute;
+  top: 55%;
+  visibility: hidden;
+}
+.dotinfo{
+  height: 9%;
+width: 2%;
+background-color: white;
+border-radius: 50%;
+display: inline-block;
+  position: absolute;
+  top: 55%;
+}
+.dottips{
+  height: 9%;
+width: 2%;
+background-color: white;
+border-radius: 50%;
+display: inline-block;
+  position: absolute;
+  top: 55%;
+  visibility: hidden;
+}
+.miniklode{
+  left: 35%; 
+  position: absolute;
+  animation-name: rykikon; 
+  animation-duration: 1s; 
+  animation-fill-mode: forwards;
+  animation-play-state: paused;
+}
+.fod{
+  left: 38%;
+  position: absolute;
+  animation-name: rykikon; 
+  animation-duration: 1s; 
+  animation-fill-mode: forwards;
+  animation-play-state: paused;
+}
+.tilføj{
+  left: 38%;
+  position: absolute;
+  animation-name: rykikon; 
+  animation-duration: 1s; 
+  animation-fill-mode: forwards;
+  animation-play-state: paused;
+}
+
+.rykikon-click{
+  animation-play-state: running;
+}
+@keyframes rykikon {
+  0% {left: 38%;}
+  100% {left: 12%;}
+  0% {top: 0%;}
+  100% {top :0%;}
+}
+
+ @keyframes visframe {
+  0% {opacity: 0;}
+  100% {opacity: 100;}
+}
+
+.tekstinfo {
+  color: white;
+  animation-duration: 1s; 
+  animation-play-state: paused;
+  pointer-events: none;
+  animation-name: vistekst;
+  z-index: 10;
+}
+.tekststats {
+  color: white;
+  animation-duration: 1s; 
+  animation-play-state: paused;
+  pointer-events: none;
+  animation-name: vistekst;
+  z-index: 10;
+  left: 57%;
+  bottom: 4px;
+}
+.teksttilføj {
+  color: white;
+  animation-duration: 1s; 
+  animation-play-state: paused;
+  pointer-events: none;
+  animation-name: vistekst;
+  z-index: 10;
+}
+
+@keyframes vistekst {
+  0% {opacity: 0%;}
+  100% {opacity: 100%;}
+}
+
+
+.knappen {
+height: 35px;
+  text-align: center;
+  background-color: #06C699;
+  color: white;
+  border-radius: 20px;
+  transition: 0.3s;
+  font-size: 12 px;
+
+}
+
+.knappen:hover .knap-text {
+
+  animation-name: fade-in;
+  animation-duration: 1s;
+  animation-play-state: running;
+  display: inline-block;
+}
+
+.knappen:hover .knap-img {
+
+  position: relative;
+  animation-name: move-out;
+  animation-duration: .5s;
+  animation-play-state: running;
+}
+
+.knap-text {
+  display: none;
+top: 5px;
+position: block;
+}
+img{
+  margin-top: 4px;
+}
+.move-icon {
+  animation-name: move-out;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-play-state: paused;
+}
+
+@keyframes fade-in {
+  0% {opacity: 0%;}
+  100% {opacity: 100%;}
+}
+
+@keyframes fade-out {
+  0% {opacity: 100%;}
+  100% {opacity: 0%;}
+}
+
+@keyframes move-out {
+  0% {left: 20px;}
+  100% {left: 1px;}
+}
+
+@keyframes move-in {
+  0% {left: 1px;}
+  100% {left: 20px;}
+}
+#pass{
+  width: 55%;
+  left: 22.5%;
+  position: absolute;
+  height: 9%;
+  top: 33%;
+  font-family: 'Alegreya Sans SC', sans-serif;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 15px;
+  outline: none;
+  box-shadow: 0px 1px 4px 0px black inset;
+}
+#email{
+  width: 55%;
+  left: 22.5%;
+  position: absolute;
+  height: 9%;
+  top: 16%;
+  box-shadow: 0px 1px 4px 0px black inset;
+  border-radius: 15px;
+  font-family: 'Alegreya Sans SC', sans-serif;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 15px;
+  outline: none;
+}
+#loginknap{
+  width: 55%;
+  height: 9%;
+  border-radius: 40px;
+  background-color: #89DC96;
+  color: #277E61;
+  box-shadow: 0px 4px;
+  position: absolute;
+  top: 49%;
+  border:none;
+  cursor: pointer;
+  outline: none;
+  font-family: 'Alegreya Sans SC', sans-serif;
+  font-size: 24px;
+  left: 22.5%;
+}
+#tilføj{
+  display: none;
+}
+#bottom-menu{
+  display: none;
+}
+.statsData{
+  position: absolute;
+  left: 20%;
+  top: 66%;
+  background-color: white;
+  border-radius: 20px;
+}
+#statsText{
+  color: black;
+  margin-left: -15px;
+  font-size: 12px;
+  font-family: 'Allerta', sans-serif;
+  font-weight: 600;
+}
+.mængde{
+  color: 626262;
+  font-family: 'Allerta', sans-serif;
+  font-size: 12px;
+}
+.statsProcent{
+  color: black;
+  font-family: 'Allerta', sans-serif;
+  font-size: 12px;
+  right: -10px;
+  position: inline;
+  margin-right: 10px;
+}
+#statsHeader{
+  font-family: 'Alegreya Sans SC', sans-serif;
+  position: absolute;
+  left: 119px;
+  top: 20%;
+  font-size: 35px;
+  color: white;
+}
